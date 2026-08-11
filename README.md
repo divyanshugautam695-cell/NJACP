@@ -1,27 +1,14 @@
 # NJACP — Non-Judgmental AI Companion for Pupils
 
-> Talk without fear. Study without pressure. Grow at your pace.
+A student-first AI companion for non-judgmental conversation and study-pressure support.
 
-NJACP is a student-focused AI companion designed to provide non-judgmental conversation, study-pressure support, adaptive study planning, and safety-aware responses.
+## Run
+`npm install && npm run dev`
 
-## Product goals
-- Listen before advising
-- Support students through academic pressure
-- Turn overwhelm into small actionable steps
-- Provide an adaptive study coach
-- Detect emotional intent and adjust response style
-- Use a safety layer for high-risk situations
+Set `HF_TOKEN` in `.env.local` to enable Hugging Face Inference Providers. The app uses an open model through the OpenAI-compatible Hugging Face router. Do not commit secrets.
 
-## AI approach
-The first release uses an open/trained model through a free/low-cost inference provider rather than training an LLM from scratch. NJACP's behavior is controlled by a dedicated system prompt, intent/emotion classification, safety rules, and evaluation examples. Fine-tuning can be added later after collecting an appropriate, consented dataset.
-
-## Planned stack
-- Next.js + TypeScript + Tailwind CSS frontend
-- Server API route for model inference
-- Hugging Face Inference Providers / compatible open model backend
-- Optional GitHub Models adapter
-- Lightweight local intent/safety classifier
-- No secrets committed to Git
+## AI design
+NJACP combines a base model with a dedicated system prompt, lightweight intent/safety detection, conversation memory, and evaluation examples. Fine-tuning can be added later after collecting a consented, high-quality dataset.
 
 ## Safety
-NJACP is not a therapist, doctor, or emergency service. It should encourage trusted human support when a situation is serious and prioritize immediate human help when there is a credible risk of harm.
+NJACP is not a therapist or emergency service. Serious safety concerns should be routed toward trusted human support and appropriate emergency/crisis resources.
