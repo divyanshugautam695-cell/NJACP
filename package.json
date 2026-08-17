@@ -1,6 +1,6 @@
 {
   "name": "njacp",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -13,6 +13,7 @@
   "dependencies": {
     "@capacitor/android": "8.4.2",
     "@capacitor/core": "8.4.2",
+    "@supabase/supabase-js": "^2.57.0",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest"
