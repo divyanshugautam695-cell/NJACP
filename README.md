@@ -60,6 +60,19 @@ Student-facing reply
 
 NJACP is an AI companion, not a therapist, doctor or emergency service. It must not diagnose users or provide instructions for self-harm or violence. High-risk messages are routed to an immediate-safety response that encourages trusted human support and emergency help when necessary.
 
+## AI usage disclosure
+
+AI tools were used as development assistance during the project for brainstorming, debugging, explaining implementation concepts, reviewing code, and helping develop parts of the application. AI was used as a learning and development aid rather than as a replacement for understanding the project.
+
+The developer reviewed and integrated the implementation and is responsible for understanding and explaining the project's architecture, functionality, and technical decisions. If requested by the organizers, relevant AI chat history can be provided.
+
+## External resources and attribution
+
+- **Next.js, React, TypeScript, Tailwind CSS:** open-source frameworks/libraries used by the project.
+- **Hugging Face Inference Providers:** used for AI-assisted generation.
+- **Open-weight model:** the configured model is supplied through Hugging Face and is not trained from scratch by this project.
+- Any additional third-party assets or code should be credited here as they are added.
+
 ## Roadmap
 
 1. Add a dedicated emotion-classification model.
