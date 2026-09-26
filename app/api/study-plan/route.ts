@@ -17,5 +17,5 @@ export async function POST(req:Request){
   const response=await fetch("https://router.huggingface.co/v1/chat/completions",{method:"POST",headers:{Authorization:"Bearer "+process.env.HF_TOKEN,"Content-Type":"application/json"},body:JSON.stringify({model:process.env.HF_MODEL||"openai/gpt-oss-20b",messages:[{role:"system",content:"You are an adaptive study planner. Return only JSON with tasks and explanation. Preserve completed tasks, never invent tasks, keep minutes 5-90, prioritize high priority work, and reduce workload when energy is low."},{role:"user",content:JSON.stringify({tasks,energy,available,examDays})}],temperature:.2,max_tokens:900})});
   if(!response.ok)return NextResponse.json(localAdapt(tasks,energy,available,examDays));
   const data=await response.json();const raw=data?.choices?.[0]?.message?.content?.trim()||"";const cleaned=raw.replace(/^```json\s*/,"").replace(/\s*```$/,"");const parsed=JSON.parse(cleaned);if(!Array.isArray(parsed.tasks))throw new Error("invalid");return NextResponse.json(parsed);
- }catch{return NextResponse.json(localAdapt([],5,60,14))}
+ }catch{return NextResponse.json(localAdapt(tasks,energy,available,examDays))}
 }
