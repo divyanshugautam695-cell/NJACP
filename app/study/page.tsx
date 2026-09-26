@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useEffect, useMemo, useState } from "react";
 
 type Task={id:string;subject:string;topic:string;minutes:number;priority:"high"|"medium"|"low";done:boolean};
 const starter:Task[]=[
@@ -12,6 +12,8 @@ const starter:Task[]=[
 
 export default function AdaptiveStudy(){
  const[tasks,setTasks]=useState<Task[]>(starter),[energy,setEnergy]=useState(6),[available,setAvailable]=useState(90),[examDays,setExamDays]=useState(12),[subject,setSubject]=useState(""),[topic,setTopic]=useState(""),[loading,setLoading]=useState(false),[message,setMessage]=useState("Missing a session is data, not failure.");
+ useEffect(()=>{try{const saved=localStorage.getItem("njacp-adaptive-study");if(saved){const d=JSON.parse(saved);if(Array.isArray(d.tasks))setTasks(d.tasks);if(typeof d.energy==="number")setEnergy(d.energy);if(typeof d.available==="number")setAvailable(d.available);if(typeof d.examDays==="number")setExamDays(d.examDays);}}catch{}},[]);
+ useEffect(()=>{try{localStorage.setItem("njacp-adaptive-study",JSON.stringify({tasks,energy,available,examDays}));}catch{}},[tasks,energy,available,examDays]);
  const ordered=useMemo(()=>{const r={high:3,medium:2,low:1};return [...tasks].sort((a,b)=>Number(a.done)-Number(b.done)||r[b.priority]-r[a.priority])},[tasks]);
  const done=tasks.filter(t=>t.done).length,progress=tasks.length?Math.round(done/tasks.length*100):0;
  function toggle(id:string){setTasks(x=>x.map(t=>t.id===id?{...t,done:!t.done}:t));setMessage("Nice. NJACP will use that change when you adapt the plan.");}
